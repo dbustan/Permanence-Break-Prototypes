@@ -19,12 +19,12 @@ Ex:
 
 └── Permanence-Break/  
 $~~~~$├── Prototypes/  
-    │   ├── Prototype-1/  
-    │   │   ├── Assets/  
-    │   │   ├── Packages/  
-    │   │   ├── etc...  
-    │   │   └── (Place copy of .gitignore here)  
-    │   ├── Prototype-2/  
-    │   │   └── etc...  
-    │   └── etc...  
-    └── .gitignore (copy this)
+$~~~~$│$~~~~$├── Prototype-1/  
+$~~~~$│$~~~~$│$~~~~$├── Assets/  
+$~~~~$│$~~~~$│$~~~~$├── Packages/  
+$~~~~$│$~~~~$│$~~~~$├── etc...  
+$~~~~$│$~~~~$│$~~~~$└── (Place copy of .gitignore here)  
+$~~~~$│$~~~~$├── Prototype-2/  
+$~~~~$│$~~~~$│$~~~~$└── etc...  
+$~~~~$│$~~~~$└── etc...  
+$~~~~$└── .gitignore (copy this)
