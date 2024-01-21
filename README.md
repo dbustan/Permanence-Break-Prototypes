@@ -17,14 +17,14 @@ When you want to make a new project make sure to include a copy of the gitignore
 
 Ex:
 
-└── Permanence-Break/
-    ├── Prototypes/
-    │   ├── Prototype-1/
-    │   │   ├── Assets/
-    │   │   ├── Packages/
-    │   │   ├── etc...
-    │   │   └── (Place copy of .gitignore here)
-    │   ├── Prototype-2/
-    │   │   └── etc...
-    │   └── etc...
+└── Permanence-Break/  
+    ├── Prototypes/  
+    │   ├── Prototype-1/  
+    │   │   ├── Assets/  
+    │   │   ├── Packages/  
+    │   │   ├── etc...  
+    │   │   └── (Place copy of .gitignore here)  
+    │   ├── Prototype-2/  
+    │   │   └── etc...  
+    │   └── etc...  
     └── .gitignore (copy this)
