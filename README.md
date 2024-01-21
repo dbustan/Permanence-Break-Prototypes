@@ -1,4 +1,4 @@
-# Permanance Break
+# Permanence Break
 
 Hello! This repo is our groups senior project for UCSCs game design program. The people behind it's creation are: 
 
