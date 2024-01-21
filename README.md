@@ -19,7 +19,7 @@ Ex:
 
 └── Permanence-Break/  
 $~~~~$├── Prototypes/  
-$~~~~$│        ├── Prototype-1/  
+$~~~~$│    ├── Prototype-1/  
 $~~~~$│    │    ├── Assets/  
 $~~~~$│    │    ├── Packages/  
 $~~~~$│    │    ├── etc...  
