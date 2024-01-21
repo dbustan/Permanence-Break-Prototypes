@@ -16,7 +16,7 @@ Hello! This repo is our groups senior project for UCSCs game design program. The
 When you want to make a new project make sure to include a copy of the gitignore provided. It should be placed inside of the folder of each respective project.
 
 Ex:
-.
+
 └── Permanence-Break/
     ├── Prototypes/
     │   ├── Prototype-1/
