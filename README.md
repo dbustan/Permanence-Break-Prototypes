@@ -18,7 +18,7 @@ When you want to make a new project make sure to include a copy of the gitignore
 Ex:
 
 └── Permanence-Break/  
-$----$├── Prototypes/  
+$~~~~$├── Prototypes/  
     │   ├── Prototype-1/  
     │   │   ├── Assets/  
     │   │   ├── Packages/  
