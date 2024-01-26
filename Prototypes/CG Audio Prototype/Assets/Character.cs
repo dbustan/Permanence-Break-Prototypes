@@ -65,6 +65,9 @@ public class Character : MonoBehaviour
             if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
             {
                 Debug.Log("Did hit");
+                Spawner buttonScript = hit.collider.gameObject.GetComponent<Spawner>();
+                buttonScript.RandomPos();
+
             } else
             {
                 Debug.Log("NOT");
