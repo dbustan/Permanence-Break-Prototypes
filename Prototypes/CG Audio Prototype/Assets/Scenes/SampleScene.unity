@@ -572,6 +572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: d45717d0649b208479d44150fe86b341, type: 2}
+  player: {fileID: 1122635251}
+  walkingPrefab: {fileID: 7411299312223213019, guid: 54cb347d5901711469fac90f69b9426b, type: 3}
 --- !u!1 &945425770
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +915,7 @@ MonoBehaviour:
   speed: 3.74
   jumpHeight: 3.27
   cameraTransform: {fileID: 963194228}
+  sm: {fileID: 876618774}
 --- !u!136 &1122635254
 CapsuleCollider:
   m_ObjectHideFlags: 0

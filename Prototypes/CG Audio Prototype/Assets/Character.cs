@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,17 +14,22 @@ public class Character : MonoBehaviour
 
     private float yVelocity;
 
+    private bool isMoving;
+
+
     public Transform cameraTransform;
     private CharacterController characterController;
     private Vector3 direction;
 
     private Vector3 velocity;
 
+    [SerializeField] private SoundManager sm;
+
     private const float gravity = 9.8f;
     private bool jumping;
+    private float timeSinceLastFootstep;
 
-    
-    
+
     void Start()
     {
         jumping = false;
@@ -37,6 +44,13 @@ public class Character : MonoBehaviour
         Vector3 forward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
         Vector3 right = Vector3.ProjectOnPlane(cameraTransform.right, Vector3.up).normalized;
         direction = forward * verticalInput + right * horizontalInput;
+        if (direction != Vector3.zero)
+        {
+            isMoving = true;
+        } else
+        {
+            isMoving = false;
+        }
         velocity = direction * speed;
         if (characterController.isGrounded && !jumping){
             yVelocity = -1f;
@@ -52,8 +66,10 @@ public class Character : MonoBehaviour
         }
         velocity.y = yVelocity;
         characterController.Move(velocity * Time.deltaTime);
+        velocity = new Vector3(0, 0, 0);
+
         InputCheck();
-    
+        FootstepsCheck(isMoving);
     }
     private void InputCheck()
     {
@@ -74,7 +90,32 @@ public class Character : MonoBehaviour
             }
 
         }
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll > 0f)
+        {
+            speed++;
+        } else if (scroll < 0f)
+        {
+            speed--;
+        } else
+        {
+            Debug.Log("no speed change");
+        }
+    }
+    private void FootstepsCheck(bool isMoving)
+    {
+        if (!isMoving)
+        {
+            return;
+        }
+        //The bigger the speed, the smaller the value, the faster the audio plays
+        if (Time.time - timeSinceLastFootstep >= 1f / speed)
+        {
+            sm.PlayerWalk();
+            timeSinceLastFootstep = Time.time;
+        }
     }
 }
+
 
 

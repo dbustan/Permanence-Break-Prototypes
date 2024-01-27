@@ -19,6 +19,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-3731377383131472174
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 039bf1578fbefb842affc9e885b22876
+  m_EffectName: Attenuation
+  m_MixLevel: 25f1f685949a73647b26e1c5c6d26c1d
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -39,6 +53,7 @@ AudioMixerController:
   - guids:
     - dd69edd7e4447494a90dbb46af3a9ab5
     - aa4ae4c6736fcd54191dfb7ca661ec07
+    - 972df272e26fc3c46870b995fa677e2a
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -53,6 +68,7 @@ AudioMixerGroupController:
   m_GroupID: dd69edd7e4447494a90dbb46af3a9ab5
   m_Children:
   - {fileID: -4156278620921964626}
+  - {fileID: 8783130134921511604}
   m_Volume: a44610171e5cf1d4c9849d955ae5f105
   m_Pitch: 64562d6230f89ba4aae8ecde00b07077
   m_Send: 00000000000000000000000000000000
@@ -102,3 +118,45 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &7588306936204263079
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 5262e53bc4755314a8d56a7ac59904dd
+  m_EffectName: Pitch Shifter
+  m_MixLevel: aa892d2de5bbd084c92f3829c1b3b196
+  m_Parameters:
+  - m_ParameterName: Pitch
+    m_GUID: 8698d78b4f0504048931822c72423c57
+  - m_ParameterName: FFT size
+    m_GUID: e384d6f29fa5bb843879561c1011dd30
+  - m_ParameterName: Overlap
+    m_GUID: ec513dd094cb30e4a82f081dd45fe287
+  - m_ParameterName: Max channels
+    m_GUID: ef0d57c36d665e34bbad649be20103fe
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &8783130134921511604
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Walking Pitch
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 972df272e26fc3c46870b995fa677e2a
+  m_Children: []
+  m_Volume: 6e4b1d32597d58e458232bc928a8e600
+  m_Pitch: c1756fe486e88814181a71287402991e
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3731377383131472174}
+  - {fileID: 7588306936204263079}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
