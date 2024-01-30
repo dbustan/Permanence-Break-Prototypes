@@ -17,9 +17,9 @@ public class Spawner : MonoBehaviour
     
     public void RandomPos()
     {
-        float randPosX = Random.Range(-24.0f, 24.0f);
+        float randPosX = Random.Range(-2.0f, 2.0f);
         float randPosY = Random.Range(3.0f, 10.0f);
-        float randPosZ = Random.Range(-24.0f, 24.0f);
+        float randPosZ = Random.Range(-2.0f, 2.0f);
         Vector3 pos = new Vector3(randPosX, randPosY, randPosZ);
         Instantiate(cubePrefab, pos, Quaternion.identity);
     }

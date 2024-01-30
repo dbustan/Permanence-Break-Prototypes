@@ -62,11 +62,8 @@ public class SoundManager : MonoBehaviour
         footAlternate = !footAlternate;
         AudioSource footstepAudio = newSource.GetComponent<AudioSource>();
         footstepAudio.Play();
-        //FootstepSounds.Add(newSource);
-        //if (FootstepSounds.Count> 10)
-        //{
-           // FootstepSounds.Clear();
-        //}
+        
+       
 
 
 

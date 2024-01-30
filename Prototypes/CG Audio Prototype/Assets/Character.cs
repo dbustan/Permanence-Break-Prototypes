@@ -104,7 +104,7 @@ public class Character : MonoBehaviour
     }
     private void FootstepsCheck(bool isMoving)
     {
-        if (!isMoving)
+        if (!isMoving || !characterController.isGrounded)
         {
             return;
         }
