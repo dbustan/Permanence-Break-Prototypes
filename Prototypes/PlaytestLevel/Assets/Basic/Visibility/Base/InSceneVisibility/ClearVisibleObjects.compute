@@ -1,0 +1,13 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel ClearVisibleObjects
+
+int maxObjects;
+
+RWStructuredBuffer<int> objectIds;
+
+[numthreads(16,1,1)]
+void ClearVisibleObjects (uint3 id : SV_DispatchThreadID)
+{
+    if(id.x >= (uint)maxObjects) return;
+    objectIds[id.x] = 0;
+}
