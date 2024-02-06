@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity, terminalVelocity;
     private float verticalVelocity;
     public float currentSpeed;
+    public Image speedReadout;
 
     private Camera playerCamera;
     private CharacterController cc;
@@ -22,12 +24,14 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playerCamera = GetComponentInChildren<Camera>();
         cc = GetComponent<CharacterController>();
+        speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
         currentSpeed = Mathf.Clamp(currentSpeed + Input.mouseScrollDelta.y, minSpeed, maxSpeed);
+        speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
         cameraRotation();
         move();
         if(!cc.isGrounded) {
@@ -56,5 +60,9 @@ public class PlayerMovement : MonoBehaviour
         if(currentCameraRotationX >= 180) currentCameraRotationX -= 360;
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX + rotationDelta.x, -verticalRange/2, verticalRange/2);
         playerCamera.transform.localRotation = Quaternion.Euler(Vector3.right * currentCameraRotationX);
+    }
+
+    private float getSpeedReadoutScale() {
+        return currentSpeed >= 0 ? 6*(currentSpeed/maxSpeed) : -6*(currentSpeed/minSpeed);
     }
 }

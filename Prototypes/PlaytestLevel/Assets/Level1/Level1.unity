@@ -1832,6 +1832,21 @@ PrefabInstance:
       propertyPath: interactionLayerMask.m_Bits
       value: 759
       objectReference: {fileID: 0}
+    - target: {fileID: 5702369808865855980, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702369808865855980, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702369808865855980, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5223074
+      objectReference: {fileID: 0}
     - target: {fileID: 5870155047572573469, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}
       propertyPath: m_Name
