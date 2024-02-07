@@ -1919,13 +1919,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6992999096556260192, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}
+      propertyPath: jumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992999096556260192, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
+      propertyPath: speedRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992999096556260192, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6992999096556260192, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}
       propertyPath: verticalRange
-      value: 85
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992999096556260192, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
+      propertyPath: speedChangeRate
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6992999096556260192, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}

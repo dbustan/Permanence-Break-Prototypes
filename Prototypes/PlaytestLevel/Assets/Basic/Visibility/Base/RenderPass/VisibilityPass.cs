@@ -35,7 +35,7 @@ public class VisibilityPass : ScriptableRenderPass
         };
         FilteringSettings filteringSettings = FilteringSettings.defaultValue;
 
-        cmd.ClearRenderTarget(true, true, new Color(0, 0, 0, 1));
+        cmd.ClearRenderTarget(true, true, new Color(0, 0, 1, 1));
         context.ExecuteCommandBuffer(cmd);
         
         context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref filteringSettings);

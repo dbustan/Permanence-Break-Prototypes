@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,17 @@ public class PlayerMovement : MonoBehaviour
     public float cameraSensitivity;
     public float verticalRange;
 
-    public float minSpeed, maxSpeed;
+    public float speedRange;
     public float gravity, terminalVelocity;
     private float verticalVelocity;
     public float currentSpeed;
+    public float speedChangeRate;
+    private float currentSpeedPreCurve;
+    public float jumpHeight;
     public Image speedReadout;
 
     private Camera playerCamera;
+    private bool jumping;
     private CharacterController cc;
 
     // Start is called before the first frame update
@@ -25,19 +30,29 @@ public class PlayerMovement : MonoBehaviour
         playerCamera = GetComponentInChildren<Camera>();
         cc = GetComponent<CharacterController>();
         speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
+        currentSpeedPreCurve = Mathf.Sqrt(currentSpeed/speedRange);
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentSpeed = Mathf.Clamp(currentSpeed + Input.mouseScrollDelta.y, minSpeed, maxSpeed);
-        speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
+        updateSpeed();
         cameraRotation();
         move();
         if(!cc.isGrounded) {
             verticalVelocity = Mathf.Clamp(verticalVelocity - gravity * Time.deltaTime, -terminalVelocity, 1000);
         } else {
-            verticalVelocity = 0f;
+            if(!jumping) {
+                if(Input.GetMouseButtonDown(2)) {
+                    verticalVelocity = Mathf.Sqrt(2*gravity*jumpHeight);
+                    jumping = true;
+                }
+            } else {
+                verticalVelocity = 0f;
+            }
+            if(jumping && verticalVelocity <= 0) {
+                jumping = false;
+            }
         }
     }
 
@@ -62,7 +77,12 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Euler(Vector3.right * currentCameraRotationX);
     }
 
+    private void updateSpeed() {
+        currentSpeedPreCurve = Mathf.Clamp(currentSpeedPreCurve + Input.mouseScrollDelta.y * speedChangeRate, -1, 1);
+        currentSpeed = speedRange * Mathf.Pow(currentSpeedPreCurve, 2) * Math.Sign(currentSpeedPreCurve);
+        speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
+    }
     private float getSpeedReadoutScale() {
-        return currentSpeed >= 0 ? 6*(currentSpeed/maxSpeed) : -6*(currentSpeed/minSpeed);
+        return 6*(currentSpeed/speedRange);
     }
 }
