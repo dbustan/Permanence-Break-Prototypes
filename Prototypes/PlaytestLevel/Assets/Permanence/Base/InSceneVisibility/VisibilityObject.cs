@@ -10,6 +10,8 @@ public class VisibilityObject : MonoBehaviour
     public bool phasedOut;
     public bool grabbed;
 
+    public Renderer renderer;
+
     private int unseenFrames;
     private const int MAX_UNSEEN_FRAMES = 3;
     protected Rigidbody rb;

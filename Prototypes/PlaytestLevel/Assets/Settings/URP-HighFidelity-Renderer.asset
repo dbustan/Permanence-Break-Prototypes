@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   visibilityPassSettings:
-    renderPassEvent: 250
+    renderPassEvent: 300
     targetTexture: {fileID: 8400000, guid: a1e40f8f73112804f8365e5058a53b27, type: 2}
     visibilityShader: {fileID: -6465566751694194690, guid: 5d3de80c86556424283422e99c9598c5,
       type: 3}
