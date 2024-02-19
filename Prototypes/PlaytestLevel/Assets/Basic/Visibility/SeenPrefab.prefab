@@ -124,6 +124,7 @@ MonoBehaviour:
   visible: 0
   phasedOut: 0
   grabbed: 0
+  renderer: {fileID: 2516553989701197695}
 --- !u!54 &9155467426743424174
 Rigidbody:
   m_ObjectHideFlags: 0

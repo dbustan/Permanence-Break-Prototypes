@@ -22,22 +22,7 @@ public class VisibilityManager : MonoBehaviour
         numObjects = 0;
         nextId = 1;
         
-        foreach(GameObject obj in FindObjectsOfType(typeof (GameObject))) {
-            Renderer renderer = obj.GetComponent<Renderer>();
-            if(!renderer || !obj.GetComponent<VisibilityObject>()) continue;
-            if(nextId > maxObjectsInScene) throw new System.Exception("Number of Permanence objects exceeds the maximum. Plese remove objects from the scene or increase the max.");
-
-            MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
-
-            int objId = nextId;
-            nextId++;
-            numObjects++;
-            obj.GetComponent<VisibilityObject>().setObjectId(objId);
-
-            idToGameObject.Add(objId, obj);
-            propertyBlock.SetFloat("_objectId", objId);
-            renderer.SetPropertyBlock(propertyBlock);
-        }
+        getAllVisibilityObjects();
     }
 
     private void Update() {
@@ -80,6 +65,25 @@ public class VisibilityManager : MonoBehaviour
                     obj.setVisible();
                 }
             }
+        }
+    }
+
+    private void getAllVisibilityObjects() {
+        foreach(GameObject obj in FindObjectsOfType(typeof (GameObject))) {
+            if(!obj.GetComponent<VisibilityObject>()) continue;
+            Renderer renderer = obj.GetComponent<VisibilityObject>().renderer;
+            if(nextId > maxObjectsInScene) throw new System.Exception("Number of Permanence objects exceeds the maximum. Plese remove objects from the scene or increase the max.");
+
+            MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+
+            int objId = nextId;
+            nextId++;
+            numObjects++;
+            obj.GetComponent<VisibilityObject>().setObjectId(objId);
+
+            idToGameObject.Add(objId, obj);
+            propertyBlock.SetFloat("_objectId", objId);
+            renderer.SetPropertyBlock(propertyBlock);
         }
     }
     

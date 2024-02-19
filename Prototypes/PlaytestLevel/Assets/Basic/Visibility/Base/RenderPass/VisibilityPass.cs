@@ -29,7 +29,10 @@ public class VisibilityPass : ScriptableRenderPass
     {
         CommandBuffer cmd = CommandBufferPool.Get("VisibilityPass");
 
-        DrawingSettings drawSettings = new DrawingSettings(new ShaderTagId("UniversalForward"), new SortingSettings(renderingData.cameraData.camera))
+        SortingSettings ss = new SortingSettings(renderingData.cameraData.camera) {
+            criteria = SortingCriteria.BackToFront
+        };
+        DrawingSettings drawSettings = new DrawingSettings(new ShaderTagId("UniversalForward"), ss)
         {
             overrideShader = visibilityShader
         };

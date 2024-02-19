@@ -27,12 +27,15 @@ public class PlayerInteraction : MonoBehaviour
         bool grabButtonPressed = Input.GetMouseButtonDown(0);
         RaycastHit hit;
         Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * interactionDistance, Color.red);
+        interactionInfoText.text = "";
         if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactionDistance, interactionLayerMask)) {
             GameObject obj = hit.collider.gameObject;
             Interactible objInterData = obj.GetComponent<Interactible>();
             if(objInterData) {
-                interactionInfoText.rectTransform.anchoredPosition = getInteractibleCenterPos(objInterData);
-                interactionInfoText.text = objInterData.interactionInfoText;
+                if(objInterData.gameObject != heldObject) {
+                    interactionInfoText.rectTransform.anchoredPosition = getInteractibleCenterPos(objInterData);
+                    interactionInfoText.text = objInterData.interactionInfoText;
+                }
 
                 if(grabButtonPressed) {
                     grabButtonPressed = false;
@@ -45,11 +48,7 @@ public class PlayerInteraction : MonoBehaviour
                     }
                 }
 
-            } else {
-                interactionInfoText.text = "";
             }
-        } else {
-            interactionInfoText.text = "";
         }
         if(grabButtonPressed) {
             if(heldObject) {
