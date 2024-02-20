@@ -2084,7 +2084,7 @@ PrefabInstance:
     - target: {fileID: 607155895784873093, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
       propertyPath: m_Volume
-      value: 0.515
+      value: 0.368
       objectReference: {fileID: 0}
     - target: {fileID: 607155895784873093, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
@@ -2094,7 +2094,7 @@ PrefabInstance:
     - target: {fileID: 1518157110118517879, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
       propertyPath: m_Volume
-      value: 0.522
+      value: 0.392
       objectReference: {fileID: 0}
     - target: {fileID: 1518157110118517879, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
@@ -2104,7 +2104,7 @@ PrefabInstance:
     - target: {fileID: 2897179433831684801, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
       propertyPath: m_Volume
-      value: 0.461
+      value: 0.327
       objectReference: {fileID: 0}
     - target: {fileID: 2897179433831684801, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
@@ -2120,6 +2120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SeenCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661345448029702978, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9041359430219988634, guid: 5aaf78de05164dbb3ba322a78fb0ae7c,
         type: 3}
@@ -7738,7 +7743,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.6273583, g: 0.6273583, b: 0.6273583, a: 0.18039216}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -9477,7 +9482,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.6273583, g: 0.6273583, b: 0.6273583, a: 0.18039216}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
