@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,37 +9,54 @@ public class PlayerMovement : MonoBehaviour
 {
     public float cameraSensitivity;
     public float verticalRange;
-
+    bool leftLeg;
+    private bool isPaused;
     public float speedRange;
     public float gravity, terminalVelocity;
     private float verticalVelocity;
+
+    private float moveThreshold;
+
+    private Vector3 LastPos;
     public float currentSpeed;
     public float speedChangeRate;
     private float currentSpeedPreCurve;
     public float jumpHeight;
+    public float TimeSinceLastFootstep;
     public Image speedReadout;
 
+    public GameObject LeftFoot, RightFoot;
     private Camera playerCamera;
     private bool jumping;
     private CharacterController cc;
 
+    public GameObject PauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
+        leftLeg = true;
+        isPaused = false;
+        LastPos = transform.position;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         playerCamera = GetComponentInChildren<Camera>();
         cc = GetComponent<CharacterController>();
         speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
         currentSpeedPreCurve = Mathf.Sqrt(currentSpeed/speedRange);
+        TimeSinceLastFootstep = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         updateSpeed();
-        cameraRotation();
-        move();
+        if (!isPaused) {
+            cameraRotation();
+             move();
+        }      
+        checkPause();
         if(!cc.isGrounded) {
             verticalVelocity = Mathf.Clamp(verticalVelocity - gravity * Time.deltaTime, -terminalVelocity, 1000);
         } else {
@@ -55,12 +73,45 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    private void PlayFootStep(){
+        int index = UnityEngine.Random.Range(0, 1);
+        if (leftLeg) {
+            AudioSource[] stepSounds = LeftFoot.GetComponents<AudioSource>();
+            stepSounds[index].Play();
+            
+        } else {
+            AudioSource[] stepSounds = RightFoot.GetComponents<AudioSource>();
+            stepSounds[index].Play();
+           
+        }
+        
+        leftLeg = !leftLeg;
+        //Alternates Leg and Shuffles its choice to play
 
+    }
+    private void checkPause(){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            Cursor.visible = !Cursor.visible;
+            if (Cursor.lockState == CursorLockMode.Locked) {
+                Cursor.lockState = CursorLockMode.None;
+            } else {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            
+            PauseMenu.SetActive(!PauseMenu.activeSelf);
+            isPaused = !isPaused;
+        }
+    }
     private void move() {
+        moveThreshold = 1.45f;
         float forward = Input.GetMouseButton(1) ? 1f : 0f;
-
         Vector3 movement = transform.rotation * new Vector3(0f, 0f, forward) * currentSpeed * Time.deltaTime;
         movement += Vector3.up * verticalVelocity * Time.deltaTime;
+        float moveDistance = Vector3.Distance(transform.position, LastPos);
+        if (moveDistance >= moveThreshold) {
+            LastPos = transform.position;
+            PlayFootStep();
+        } 
         cc.Move(movement);
     }
     private void cameraRotation() {

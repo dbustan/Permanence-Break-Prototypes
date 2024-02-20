@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] Button Play, Options, Quit;
-    [SerializeField] GameObject mainMenuScreen, optionsScreen, saveSlotScreen;
-    
+    [SerializeField] GameObject UIParent, mainMenuScreen, optionsScreen, saveSlotScreen;
+
+    [SerializeField] GameManager gm;
     GameObject currentScreen;
 
+    bool trashingSave;
     private void Start() {
+        trashingSave = false;
         currentScreen = mainMenuScreen;
     }
 
@@ -34,6 +40,27 @@ public class MenuScript : MonoBehaviour
 
     public void QuitGame(){
         Application.Quit();
+    }
+
+    private void StartGame(GameObject saveSlotObj){
+        
+    }
+
+    public void HandleSaveClick(SaveSlot save){
+        if (trashingSave) {
+            SaveSystem.DeleteSave(save.saveNum);
+            AudioSource[] audioSources = UIParent.GetComponents<AudioSource>();
+            AudioSource deletionAudio = audioSources[3];
+            deletionAudio.Play();
+            save.SaveInfoText.text = "Empty";
+        } else {
+        gm.currentSaveNum = save.saveNum;
+        SceneManager.LoadScene("Level1");
+        }
+    }
+
+    public void ChangeToDeleting(){
+        trashingSave = !trashingSave;
     }
     
 
