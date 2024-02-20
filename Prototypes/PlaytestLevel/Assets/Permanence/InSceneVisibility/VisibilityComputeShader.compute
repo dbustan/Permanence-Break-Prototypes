@@ -1,0 +1,21 @@
+#pragma kernel CheckObjectIds
+
+int width;
+int height;
+
+float debugScale;
+
+RWStructuredBuffer<int> objectIds;
+Texture2D<float4> pixelsTexture;
+RWTexture2D<float4> debugTexture;
+
+[numthreads(16,16,1)]
+void CheckObjectIds (uint3 id : SV_DispatchThreadID)
+{
+    if(id.x >= (uint)width || id.y >= (uint)height) return;
+    int pixelId = (int)(pixelsTexture[id.xy].x + 0.5);
+    debugTexture[id.xy] = float4(pixelId / debugScale, 0, 0, 1);
+    if(pixelId > 0) {
+        objectIds[pixelId] = 1;
+    }
+}
