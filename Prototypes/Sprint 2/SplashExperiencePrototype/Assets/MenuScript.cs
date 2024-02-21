@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] Button Play, Options, Quit;
-    [SerializeField] GameObject loadingScreen, mainMenuCanvas, mainMenuScreen, optionsScreen, saveSlotScreen;
+    [SerializeField] GameObject loadingScreen, configScreen, mainMenuCanvas, mainMenuScreen, optionsScreen, saveSlotScreen;
     
     GameObject currentScreen;
     List<GameObject> Dots = new List<GameObject>();
@@ -17,7 +17,7 @@ public class MenuScript : MonoBehaviour
     private void Start() {
         currentScreen = loadingScreen;
         GrabLoadingTextObj(loadingScreen.transform);
-        Invoke("SwitchToMainMenu", 5);
+        Invoke("SwitchToConfig", 5);
     }
 
     private void GrabLoadingTextObj(Transform loadingScreenTransform) {
@@ -40,10 +40,10 @@ public class MenuScript : MonoBehaviour
         curr++;
     }
 
-    private void SwitchToMainMenu() {
+    private void SwitchToConfig() {
         currentScreen.SetActive(false);
         mainMenuCanvas.SetActive(true);
-        currentScreen = mainMenuScreen;
+        currentScreen = configScreen;
     }
 
     public void OpenSaveScreen(){
