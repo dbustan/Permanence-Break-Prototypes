@@ -8,11 +8,11 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] Button Play, Options, Quit;
-    [SerializeField] GameObject loadingScreen, mainMenuCanvas, mainMenuScreen, optionsScreen, saveSlotScreen;
+    [SerializeField] GameObject loadingScreen, mainMenuCanvas, mainMenuScreen, optionsScreen, creditsScreen, saveSlotScreen;
     
     GameObject currentScreen;
     List<GameObject> Dots = new List<GameObject>();
-    int curr = 0;
+    int currDot = 0;
 
     private void Start() {
         currentScreen = loadingScreen;
@@ -36,14 +36,20 @@ public class MenuScript : MonoBehaviour
     }
 
     private void setDotActive() {
-        Dots[curr].SetActive(true);
-        curr++;
+        Dots[currDot].SetActive(true);
+        currDot++;
     }
 
     private void SwitchToMainMenu() {
         currentScreen.SetActive(false);
         mainMenuCanvas.SetActive(true);
         currentScreen = mainMenuScreen;
+    }
+
+    public void OpenCreditsScreen() {
+        currentScreen.SetActive(false);
+        creditsScreen.SetActive(true);
+        currentScreen = creditsScreen;
     }
 
     public void OpenSaveScreen(){
