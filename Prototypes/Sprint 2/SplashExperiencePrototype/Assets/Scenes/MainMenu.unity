@@ -2028,6 +2028,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5896026345584570916, guid: 574426be10c0bd544ab81b5feb92b0e9,
+        type: 3}
+      propertyPath: m_text
+      value: "\u0639\u0631\u0628\u064A"
+      objectReference: {fileID: 0}
     - target: {fileID: 5907519551666513399, guid: 574426be10c0bd544ab81b5feb92b0e9,
         type: 3}
       propertyPath: m_AnchorMax.x
