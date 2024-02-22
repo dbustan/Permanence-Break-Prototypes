@@ -8,11 +8,14 @@ public class FloorButton : MonoBehaviour
     public GameObject buttonTriggerObj;
     private ButtonTrigger buttonTrigger;
 
+    private AudioSource [] offOnSounds;
+
     private int unpressedFrames;
     const int maxUnpressedFrames = 4;
     private bool colliding, pressed;
 
     void Start() {
+        offOnSounds = GetComponents<AudioSource>();
         if(buttonTriggerObj) {
             buttonTrigger = buttonTriggerObj.GetComponent<ButtonTrigger>();
         }
@@ -45,14 +48,19 @@ public class FloorButton : MonoBehaviour
     private void pressButton() {
         Debug.Log("PRESS");
         pressed = true;
+        offOnSounds[0].Play();
         if(buttonTrigger != null) {
+            
             buttonTrigger.buttonPress();
+            
         }
     }
     private void releaseButton() {
         Debug.Log("RELEASE");
         pressed = false;
+        offOnSounds[1].Play();
         if(buttonTrigger != null) {
+            
             buttonTrigger.buttonRelease();
         }
     }
